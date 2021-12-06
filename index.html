@@ -2,48 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Covid Data</title>
     <script src="https://cdn.plot.ly/plotly-2.6.3.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" src="https://img.icons8.com/office/16/000000/america.png">
 
 </head>
 <body>
-<script type="text/javascript">
-    // Date,VADATA.Death,VADATA.DeathConfirmed
-    var d1 = "/Users/jtorres/Documents/web/va.csv";
-    Plotly.d3.csv(d1, function(err, rows){
-        function unpack(rows, key) {
-            return rows.map(function(row) { return row[key]; });
-        }
-        var t1 = {
-            type: "scatter",
-            mode: "lines",
-            name: 'CO Total Deaths',
-            x: unpack(rows, 'Date'),
-            y: unpack(rows, 'CODATA.Death'),
-            line: {color: '#21A216'}
-        }
-        var t2 = {
-            type: "scatter",
-            mode: "lines",
-            name: 'CO Confirmed Deaths',
-            x: unpack(rows, 'Date'),
-            y: unpack(rows, 'CODATA.DeathConfirmed'),
-            line: {color: '#CA1B0D'}
-        }
-        var data = [t1,t2];
-        var layout = {
-            title: 'Custom: CO Total Deaths and Confirmed Deaths',
-        };
-        Plotly.newPlot('myplot', data, layout);
-    })
-</script>
-<div id="myplot">
+<h1>Covid Total Deaths vs. Daily death increases from various states </h1>
+<h3>Click on the links to be redirected to the graphs</h3>
 
+<div class="buttons">
+<a href="fl.html">Florida</a>
+<a href="tx.html">Texas</a>
+    <a href="az.html">Arizona</a>
+    <a href="ca.html">California</a>
+    <a href="va.html">Virginia</a>
 </div>
-<div>
-    <p> Data were pulled from this Data Warehouse plant: <a href="https://covidtracking.com">The COVID Tracking Project</a>
-        Information pertains to this project can be found <a href="https://covidtracking.com/about">here</a>.
-    </p>
-</div>
+
 </body>
+
 </html>

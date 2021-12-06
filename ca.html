@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Load plotly.js -->
+  <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+</head>
+<body>
+<script type="text/javascript">
+  // Date,VADATA.Death,VADATA.DeathConfirmed
+  var d1 = "https://raw.githubusercontent.com/TonyTorress/web/main/ca.csv"
+  Plotly.d3.csv(d1, function(err, rows){
+    function unpack(rows, key) {
+      return rows.map(function(row) { return row[key]; });
+    }
+    var t1 = {
+      type: "scatter",
+      mode: "lines",
+      name: 'CA Total Deaths',
+      x: unpack(rows, 'Date'),
+      y: unpack(rows, 'CADATA.Death'),
+      line: {color: '#21A216'}
+    }
+    var t2 = {
+      type: "scatter",
+      mode: "lines",
+      name: 'CA Death Increase',
+      x: unpack(rows, 'Date'),
+      y: unpack(rows, 'CADATA.DeathIncrease'),
+      line: {color: '#CA1B0D'}
+    }
+    var data = [t1,t2];
+    var layout = {
+      title: 'CA Total Deaths and Death Increase',
+    };
+    Plotly.newPlot('myplot', data, layout);
+  })
+</script>
+<div id="myplot">
+</div>
+<div>
+  <p> Data were pulled from this Data Warehouse plant: <a href="https://covidtracking.com">The COVID Tracking Project</a>
+    Information pertains to this project can be found <a href="https://covidtracking.com/about">here</a>.
+  </p>
+</div>
+</body>
+</html>
